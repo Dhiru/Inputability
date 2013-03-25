@@ -8,7 +8,7 @@ import os
 import sys
 import copy
 import shutil
-from subprocess import Popen
+import subprocess
 from xml.parsers.expat import ExpatError
 from xml.dom import minidom
 import gettext
@@ -671,7 +671,17 @@ class Settings(DialogBuilder):
         
         self.update_layouts(os.path.join(config.install_dir, "layouts/inputability"))
         self.update_layouts(self.user_layout_root1)    
+   
+    #Calling Orca
+    def on_acitvate_orca_clicked(self, event):
+     
+
+       subprocess.Popen("orca")   
+       self.window.destroy()
+       Gtk.main_quit()
     
+
+ 
     def cb_selected_layout_changed(self):
         self.update_layouts(self.user_layout_root)
 
